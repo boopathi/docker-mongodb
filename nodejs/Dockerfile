@@ -6,7 +6,6 @@ RUN apt-get update
 RUN apt-get install -y curl
 
 # Install NodeJS
-RUN mkdir 
 RUN curl -s http://nodejs.org/dist/v0.10.25/node-v0.10.25.tar.gz | tar -v -C /usr/local/ --strip-components=1 -xz
 ENV PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
