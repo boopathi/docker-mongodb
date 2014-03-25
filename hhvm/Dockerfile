@@ -15,5 +15,6 @@ RUN apt-get install -y hhvm
 
 # Expose ports and run server
 EXPOSE 80
-
+VOLUME ["/var/www"]
+WORKDIR /var/www
 ENTRYPOINT ["/usr/bin/hhvm", "-m", "server", "-p", "80"]
