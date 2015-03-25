@@ -1,0 +1,46 @@
+# path to a directory with all packages
+storage: /opt/sinopia/storage
+
+listen: 0.0.0.0:80
+
+web:
+  enable: true
+  title: Sinopia - NPM Registry
+
+auth:
+  htpasswd:
+    file: /opt/sinopia/htpasswd
+    # Maximum amount of users allowed to register, defaults to "+inf".
+    # You can set this to -1 to disable registration.
+    #max_users: 1000
+
+# a list of other known repositories we can talk to
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+packages:
+  '@*/*':
+    # scoped packages
+    allow_access: $all
+    allow_publish: $authenticated
+
+  '*':
+    # allow all users (including non-authenticated users) to read and
+    # publish all packages
+    #
+    # you can specify usernames/groupnames (depending on your auth plugin)
+    # and three keywords: "$all", "$anonymous", "$authenticated"
+    allow_access: $all
+
+    # allow all known users to publish packages
+    # (anyone can register by default, remember?)
+    allow_publish: $authenticated
+
+    # if package is not available locally, proxy requests to 'npmjs' registry
+    proxy: npmjs
+
+# log settings
+logs:
+  - {type: stdout, format: pretty, level: http}
+  #- {type: file, path: sinopia.log, level: info}

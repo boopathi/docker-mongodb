@@ -1,0 +1,11 @@
+{
+  "name": "docker-sinopia",
+  "version": "1.0.0",
+  "description": "Private npm registry for Flipkart",
+  "keywords": [
+    "sinopia"
+  ],
+  "dependencies": {
+    "sinopia": "^1.0.1"
+  }
+}
